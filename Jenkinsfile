@@ -6,8 +6,8 @@ pipeline {
     }
 
     stages {
-        steps{
-            stage('Run tests') {
+        stage('Run tests') {
+            steps {
                 sh('mvn test')
             }
         }
