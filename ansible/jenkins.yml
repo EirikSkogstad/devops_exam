@@ -1,6 +1,6 @@
 ---
 - name: Install Java and Jenkins
-  hosts: all
+  hosts: jenkins
   remote_user: root
 
   roles:
