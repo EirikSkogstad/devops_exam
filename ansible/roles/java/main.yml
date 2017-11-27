@@ -1,0 +1,6 @@
+---
+- name: Install java
+  apt:
+    name: default-jre
+    update_cache: yes
+    state: installed
