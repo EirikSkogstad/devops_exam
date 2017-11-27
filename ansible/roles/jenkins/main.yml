@@ -1,0 +1,18 @@
+---
+- name: Add jenkins public key
+  apt_key:
+    url: 'https://pkg.jenkins.io/debian-stable/jenkins.io.key'
+    state: present
+
+- name: Add jenkins repo
+  apt_repository:
+    repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+    state: present
+    update_cache: yes
+    filename: jenkins
+
+- name: Install Jenkins
+  apt:
+    name: default-jre
+    update_cache: yes
+    state: present
