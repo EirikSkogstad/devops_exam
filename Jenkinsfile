@@ -1,9 +1,15 @@
 pipeline {
     agent any
+    tools {
+        jdk 'jdk8'
+        maven 'maven'
+    }
 
     stages {
-        stage('Run tests') {
-            sh('mvn test')
+        steps{
+            stage('Run tests') {
+                sh('mvn test')
+            }
         }
     }
 }
