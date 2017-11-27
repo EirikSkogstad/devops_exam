@@ -8,7 +8,17 @@ pipeline {
     stages {
         stage('Run tests') {
             steps {
-                sh('mvn test')
+                dir('devopsexam') {
+                    sh('mvn test')
+                }
+            }
+        }
+
+        stage('Clean up after yourself') {
+            steps{
+                dir('devopsexam') {
+                    sh('mvn clean')
+                }
             }
         }
     }
