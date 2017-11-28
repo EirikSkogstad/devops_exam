@@ -14,6 +14,14 @@ pipeline {
             }
         }
 
+        stage('clean and build') {
+            steps{
+                dir('devopsexam') {
+                    sh('mvn clean install')
+                }
+            }
+        }
+
         stage('Clean up after yourself') {
             steps{
                 dir('devopsexam') {
