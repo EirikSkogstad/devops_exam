@@ -15,3 +15,8 @@
     name: google-cloud-sdk
     update_cache: yes
     state: present
+
+- name: Install kubectl from gcloud
+  apt:
+    name: kubectl
+    state: present
