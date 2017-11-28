@@ -1,0 +1,17 @@
+---
+- name: gcloud key
+  apt_key:
+    url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
+    state: present
+
+- name: Add gcloud repo
+  apt_repository:
+    repo: 'deb http://packages.cloud.google.com/apt cloud-sdk-xenial main'
+    update_cache: yes
+    state: present
+
+- name: Install google cloud sdk
+  apt:
+    name: google-cloud-sdk
+    update_cache: yes
+    state: present

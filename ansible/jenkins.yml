@@ -1,8 +1,10 @@
 ---
-- name: Install Java and Jenkins
+- name: Install everything jenkins needs
   hosts: jenkins
   remote_user: root
+  become: true
 
   roles:
+    - gcloud
     - java
     - jenkins
