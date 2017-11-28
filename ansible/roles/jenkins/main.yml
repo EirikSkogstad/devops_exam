@@ -13,6 +13,6 @@
 
 - name: Install Jenkins
   apt:
-    name: default-jre
+    name: jenkins
     update_cache: yes
     state: present
