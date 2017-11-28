@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('devopsexam') {
                     echo "${env.BUILD_NUMBER}"
-                    sh("docker build -t devopsexam:${env.BUILD_NUMBER}")
+                    sh("docker build -t devopsexam:${env.BUILD_NUMBER} .")
                 }
             }
         }
