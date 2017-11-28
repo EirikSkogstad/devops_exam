@@ -25,6 +25,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 dir('devopsexam') {
+                    sh('whoami')
                     echo "${env.BUILD_NUMBER}"
                     sh("docker build -t devopsexam:${env.BUILD_NUMBER} .")
                 }
