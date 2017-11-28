@@ -19,7 +19,7 @@ class QuoteServiceTest {
     fun getRandomQuotes() {
         var quote: String
 
-        repeat(10, {
+        repeat(20, {
             quote = quoteService.getRandomQuote()
             assertNotNull(quote)
             assertFalse(quote.isNullOrBlank())
