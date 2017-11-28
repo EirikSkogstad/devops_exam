@@ -17,8 +17,24 @@ pipeline {
         stage('clean and build') {
             steps{
                 dir('devopsexam') {
-                    sh('mvn install')
+                    sh('mvn clean install')
                 }
+            }
+        }
+
+        stage('Build docker image') {
+            steps {
+                dir('devopsexam') {
+                    echo "${env.BUILD_NUMBER}"
+                    sh("docker build -t devopsexam:${env.BUILD_NUMBER}")
+                }
+            }
+        }
+
+        stage('kubernetes test') {
+            steps {
+                sh('gcloud --version')
+                sh('gcloud --version')
             }
         }
 
