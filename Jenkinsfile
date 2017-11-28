@@ -6,18 +6,18 @@ pipeline {
     }
 
     stages {
-        stage('Run tests') {
-            steps {
-                dir('devopsexam') {
-                    sh('mvn test')
-                }
-            }
-        }
+//        stage('Run tests') {
+//            steps {
+//                dir('devopsexam') {
+//                    sh('mvn test')
+//                }
+//            }
+//        }
 
         stage('clean and build') {
             steps{
                 dir('devopsexam') {
-                    sh('mvn clean install')
+                    sh('mvn install')
                 }
             }
         }
