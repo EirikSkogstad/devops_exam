@@ -6,7 +6,7 @@
 
 - name: Add gcloud repo
   apt_repository:
-    repo: 'deb http://packages.cloud.google.com/apt cloud-sdk-xenial main'
+    repo: "deb http://packages.cloud.google.com/apt cloud-sdk-{{ansible_distribution_release}} main"
     update_cache: yes
     state: present
 

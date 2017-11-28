@@ -5,6 +5,7 @@
   become: true
 
   roles:
-    - gcloud
     - java
     - jenkins
+    - gcloud
+    - docker
