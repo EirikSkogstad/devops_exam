@@ -36,7 +36,7 @@ pipeline {
                     sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
 
                     sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone europe-west1-c --project lyrical-brook-181709')
-                    sh("kubectl set image devopsexam --image eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER} --port 8080")
+                    sh("kubectl set image devopsexam eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER} --port 8080")
                     sh("kubectl expose deployment devopsexam --type='LoadBalancer'")
                     sh("kubectl scale --replicas=3 deployment/devopsexam")
 
