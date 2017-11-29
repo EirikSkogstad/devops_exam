@@ -28,7 +28,7 @@ pipeline {
                     sh('whoami')
                     echo "${env.BUILD_NUMBER}"
                     sh("docker build -t skogeir15/devopsexam:latest .")
-                    sh("docker tag latest-image eu.gcr.io/lyrical-brook-181709/devopsexam:latest ")
+                    sh("docker tag skogeir15/devopsexam:latest eu.gcr.io/lyrical-brook-181709/devopsexam:latest ")
                 }
             }
         }
