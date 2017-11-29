@@ -27,18 +27,19 @@ pipeline {
                 dir('devopsexam') {
                     sh('whoami')
                     echo "${env.BUILD_NUMBER}"
-                    sh("docker build -t eu.gcr.io/lyrical-brook-181709/devopsexam:${BUILD:NUMBER} . ")
+                    sh("docker build -t eu.gcr.io/lyrical-brook-181709/devopsexam:${BUILD.NUMBER} . ")
 
                 }
             }
         }
 
-        stage('Tag and deploy image to Google cloud') {
+        stage('Deploy image to Google cloud') {
             steps {
                 dir('devopsexam') {
                     sh('gcloud auth activate-service-account --key-file ~/gcloud/service_key')
                     sh('gcloud config set project devopsexam')
                     sh('gcloud config set compute/zone europe-west1-c')
+
                     sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${BUILD.NUMBER}")
                     sh('gcloud container clusters create devops-kubernetes-cluster')
 
