@@ -32,10 +32,14 @@ pipeline {
             }
         }
 
-        stage('kubernetes test') {
+        stage('Deploy to Google cloud') {
             steps {
-                sh('gcloud --version')
-                sh('gcloud --version')
+                dir('devopsexam') {
+                    sh('gcloud auth activate-service-account --key-file ~/gcloud/service_key')
+                    sh('gcloud config set project lyrical-brook-181709')
+                    sh("gcloud docker --push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
+//                    sh('gcloud config set compute/zone ${DEV_OPS_ZONE}')
+                }
             }
         }
 

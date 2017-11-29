@@ -23,7 +23,4 @@
     state: present
 
 - name: Add jenkins user to docker user group
-  user:
-    name: "{{ansible_user_id}}"
-    groups: docker
-    append: yes
+  shell: "usermod -aG docker jenkins"
