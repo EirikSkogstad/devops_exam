@@ -37,7 +37,9 @@ pipeline {
                 dir('devopsexam') {
                     sh('gcloud auth activate-service-account --key-file ~/gcloud/service_key')
                     sh('gcloud config set project lyrical-brook-181709')
-                    sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
+                    sh('gcloud container clusters create devops-kubernetes-cluster')
+                    sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam")
+                    //sh('gcloud docker -- push eu.gcr.io/${DEV_OPS_PROJECT_ID}/springserver:${BUILD_NUMBER}')
 //                    sh('gcloud config set compute/zone ${DEV_OPS_ZONE}')
                 }
             }
