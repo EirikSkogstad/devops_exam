@@ -41,7 +41,17 @@ pipeline {
                     sh('gcloud config set compute/zone europe-west1-c')
 
                     sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
-                    sh('gcloud container clusters create devops-kubernetes-cluster')
+
+                    sh("kubectl run devops-instance --image eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER} -port 8080")
+                    sh("kubectl expose deployment devops-instance --type='LoadBalancer'")
+                    sh("kubectl scale --replicas=3 deployment/devops-instance")
+
+
+
+                    //sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone ${DEV_OPS_ZONE} --project ${DEV_OPS_PROJECT_ID}')
+                    //sh('kubectl set image deployment/springserver springserver=eu.gcr.io/${DEV_OPS_PROJECT_ID}/springserver:${BUILD_NUMBER}')
+                    //sh('gcloud container clusters resize devops-kubernetes-cluster --size 1 --quiet')
+                    //sh('gcloud container clusters resize devops-kubernetes-cluster --size 3 --quiet')
 
                 }
             }
