@@ -27,7 +27,7 @@ pipeline {
                 dir('devopsexam') {
                     sh('whoami')
                     echo "${env.BUILD_NUMBER}"
-                    sh("docker build -t eu.gcr.io/lyrical-brook-181709/devopsexam:${BUILD.NUMBER} . ")
+                    sh("docker build -t eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER} . ")
 
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
                     sh('gcloud config set project devopsexam')
                     sh('gcloud config set compute/zone europe-west1-c')
 
-                    sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${BUILD.NUMBER}")
+                    sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
                     sh('gcloud container clusters create devops-kubernetes-cluster')
 
                 }
