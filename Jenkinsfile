@@ -25,7 +25,6 @@ pipeline {
             }
         }
 
-        stage('R')
 
         stage('Deploy image to Google cloud') {
             steps {
