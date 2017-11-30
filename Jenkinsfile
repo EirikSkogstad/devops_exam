@@ -37,16 +37,8 @@ pipeline {
 
                     sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone europe-west2-a --project lyrical-brook-181709')
                     sh("kubectl set image deployment/devopsexam  devopsexam=eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
-//                    sh("kubectl expose deployment devopsexam --type=LoadBalancer --port=8080")
-                    sh("kubectl scale --replicas=3 deployment/devopsexam")
-
-
-
-                    //sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone ${DEV_OPS_ZONE} --project ${DEV_OPS_PROJECT_ID}')
-                    //sh('kubectl set image deployment/springserver springserver=eu.gcr.io/${DEV_OPS_PROJECT_ID}/springserver:${BUILD_NUMBER}')
-                    //sh('gcloud container clusters resize devops-kubernetes-cluster --size 1 --quiet')
-                    //sh('gcloud container clusters resize devops-kubernetes-cluster --size 3 --quiet')
-
+                    sh("kubectl scale --replicas=1 deployment/devopsexam")
+                    sh("kubectl scale --replicas=4 deployment/devopsexam")
                 }
             }
         }
