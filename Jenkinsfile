@@ -34,9 +34,9 @@ pipeline {
                     sh('gcloud config set compute/zone europe-west3-a')
 
                     sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
-                    sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone europe-west3-a --project lyrical-brook-181709')
+                    sh('gcloud container clusters get-credentials devops-kubernetes-cluster3 --zone europe-west3-a --project lyrical-brook-181709')
 
-                    sh("kubectl run devops-kubernetes-cluster --image eu.gcr.io/lyrical-brook-181709/devopsexam:75 --port=80")
+                    sh("kubectl run devops-kubernetes-cluster3 --image eu.gcr.io/lyrical-brook-181709/devopsexam:75 --port=80")
                     //sh("kubectl set image deployment/devopsexam  devopsexam=eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
                     sh("kubectl scale --replicas=1 deployment/devopsexam")
                     sh("kubectl scale --replicas=4 deployment/devopsexam")
