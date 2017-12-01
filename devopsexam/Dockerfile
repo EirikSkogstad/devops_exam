@@ -1,6 +1,6 @@
-FROM openjdk:8u131-jdk-slim
+FROM openjdk:8u151-jdk-slim
 
 ADD target/devopsexam.jar devopsexam.jar
 ENTRYPOINT exec java -jar devopsexam.jar
 
-EXPOSE 80
+EXPOSE 8080
