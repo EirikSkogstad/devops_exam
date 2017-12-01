@@ -31,10 +31,10 @@ pipeline {
                 dir('devopsexam') {
                     sh('gcloud auth activate-service-account --key-file ~/gcloud/service_key')
                     sh('gcloud config set project lyrical-brook-181709')
-                    sh('gcloud config set compute/zone europe-west2-a')
+                    sh('gcloud config set compute/zone europe-west2-b')
 
                     sh("gcloud docker -- push eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
-                    sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone europe-west2-a --project lyrical-brook-181709')
+                    sh('gcloud container clusters get-credentials devops-kubernetes-cluster --zone europe-west2-b --project lyrical-brook-181709')
 
                     sh("kubectl run devops --image eu.gcr.io/lyrical-brook-181709/devopsexam:75 --port=80")
                     //sh("kubectl set image deployment/devopsexam  devopsexam=eu.gcr.io/lyrical-brook-181709/devopsexam:${env.BUILD_NUMBER}")
